@@ -1,0 +1,65 @@
+<div class="card">
+  <div class="card-header">
+    <h1>product list</h1>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="cal-lg-6 border-right">
+        <header class="modal-header"><h2>Displaying all product list</h2></header>
+        <div class="table-responsive">
+         <table class="table table-hover table-borde">
+           <tr>
+             <th>Action</th>
+             <th>Id</th>
+             <th>Name</th>
+             <th>Price</th>
+             <th>Created</th>
+           </tr>
+           <tr *ngFor= "let product of productlist;">
+           <td><input type="radio" (change)="onselect(product,btn)" name="r1"></td>
+            <td>{{product.Id}}</td>
+            <td>{{product.name}}</td>
+            <td>{{product.price}}</td>
+            <td>{{product.created}}</td>
+           </tr>
+         </table>
+        </div>
+      </div>
+      <div class="cal-lg-6">
+         <header class="model-header">
+
+           <h2>Update&Delete product</h2>
+          </header>
+          <br>
+          <form #productData="ngForm">
+           <div class="form-group">
+             &nbsp;&nbsp;
+             <label>Id</label>
+             <input type="text" [ngModel]="selectedproduct.Id" name="Id"  class="form-control" required>
+
+           </div>
+           <div class="form-group">
+             <label>Name</label>
+             <input type="text"[ngModel]="selectedproduct.name" name="name" class="form-control" required>
+           </div>
+           <div class="form-group">
+             <label>Price</label>
+             <input type="text" [ngModel]="selectedproduct.price" name="price" class="form-control" required>
+           </div>
+           <div class="form-group">
+             <label>Created</label>
+             <input type="text" [ngModel]="selectedproduct.created" name="created" class="form-control" required>
+           </div>
+           <div class="form-group">
+             <button type="button" #btn (click)="onsubmit(productData,btn)" class="btn btn-sm btn-primary">Add</button>
+             &nbsp;&nbsp;
+             <button (click)="delproduct(selectedproduct._id)" *ngIf="selectedproduct._id!=null" class="btn-btn-sm btn-danger">Delete</button>
+           </div>
+         </form>
+
+         </div>
+
+  </div>
+ </div>
+
+</div>
